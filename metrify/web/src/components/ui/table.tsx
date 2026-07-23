@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
+import { ReactNode, TdHTMLAttributes, ThHTMLAttributes } from "react";
 
 export function Table({ children }: { children: ReactNode }) {
   return (
@@ -33,14 +33,23 @@ export function TR({ children, className }: { children: ReactNode; className?: s
   return <tr className={cn("hover:bg-white/[0.02] transition-colors", className)}>{children}</tr>;
 }
 
-export function TD({ children, className, align = "left", mono }: { children: ReactNode; className?: string; align?: "left" | "right" | "center"; mono?: boolean }) {
+interface TDProps extends TdHTMLAttributes<HTMLTableCellElement> {
+  children: ReactNode;
+  align?: "left" | "right" | "center";
+  mono?: boolean;
+}
+
+export function TD({ children, className, align = "left", mono, ...props }: TDProps) {
   return (
-    <td className={cn(
-      "px-5 py-4",
-      align === "right" ? "text-right" : align === "center" ? "text-center" : "text-left",
-      mono && "font-mono",
-      className
-    )}>
+    <td
+      className={cn(
+        "px-5 py-4",
+        align === "right" ? "text-right" : align === "center" ? "text-center" : "text-left",
+        mono && "font-mono",
+        className
+      )}
+      {...props}
+    >
       {children}
     </td>
   );
