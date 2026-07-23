@@ -34,7 +34,7 @@ export function TR({ children, className }: { children: ReactNode; className?: s
 }
 
 interface TDProps extends TdHTMLAttributes<HTMLTableCellElement> {
-  children: ReactNode;
+  children?: ReactNode;
   align?: "left" | "right" | "center";
   mono?: boolean;
 }
