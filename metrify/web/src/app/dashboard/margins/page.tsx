@@ -108,7 +108,7 @@ export default function MarginsPage() {
               <TD align="right" mono className="text-red-400 font-semibold">{formatCents(margins.total_ai_cost_cents)}</TD>
               <TD align="right" mono className="text-emerald-400 font-semibold">{formatCents(margins.total_gross_profit_cents)}</TD>
               <TD align="right"><span className={`text-2xs font-semibold font-mono px-2 py-0.5 rounded-lg ring-1 ring-inset ${marginColor(margins.overall_margin_percent).bg}`}>{formatPercent(margins.overall_margin_percent)}</span></TD>
-              <TD></TD>
+              <td></td>
             </tr>
           </TFoot>
         </Table>
