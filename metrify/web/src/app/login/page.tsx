@@ -19,13 +19,17 @@ export default function LoginPage() {
     setLoading(true);
 
     const result = await login(email, password);
-    if (result.success) {
-      router.push("/dashboard");
-    } else {
-      setError(result.error || "Login failed");
+if (result.success) {
+  // Check if email needs verification
+  const saved = localStorage.getItem("metrify_user");
+  if (saved) {
+    const userData = JSON.parse(saved);
+    if (userData.requiresVerification) {
+      router.push("/verify");
+      return;
     }
-    setLoading(false);
-  };
+  }
+  router.push("/dashboard");
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-surface-0">

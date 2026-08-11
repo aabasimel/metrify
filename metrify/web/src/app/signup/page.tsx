@@ -22,7 +22,7 @@ export default function SignupPage() {
 
     const result = await signup(email, password, name, company);
     if (result.success) {
-      router.push("/dashboard");
+      router.push("/verify");
     } else {
       setError(result.error || "Signup failed");
     }
